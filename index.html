@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Line Game</title>
+	<link rel="stylesheet" href="start.css">
+	<link rel="stylesheet" href="gamemode.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="start-screen">
+		<!-- Decorative blocks for visual appeal -->
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<h1 id="start-title">Connect Line Game</h1>
+		<button id="start-btn">Start</button>
+		<button id="mode-btn">Game Mode</button>
+		<button id="settings-btn">Settings</button>
+	</div>
+
+	<!-- Settings modal (hidden until opened) -->
+	<div id="settings-modal" class="modal-hidden">
+		<div class="modal-box">
+			<div class="modal-body">
+				<div class="toggle-row">
+					<label for="colourblind-toggle">Colourblind friendly mode:</label>
+					<input id="colourblind-toggle" type="checkbox" />
+				</div>
+				<!-- Language selector -->
+				<div class="language-select">
+					<h3 class="language-title">Languages</h3>
+					<div class="language-option">
+						<div class="lang-info">
+							<div class="lang-label">English</div>
+							<div class="lang-points">
+								<div>Interface</div>
+								<div>Buttons & Labels</div>
+							</div>
+						</div>
+						<label class="lang-check"><input type="radio" name="language" value="en" checked><span class="check-box"></span></label>
+					</div>
+					<div class="language-option">
+						<div class="lang-info">
+							<div class="lang-label">Danish</div>
+							<div class="lang-points">
+								<div>Interface</div>
+								<div>Buttons & Labels</div>
+							</div>
+						</div>
+						<label class="lang-check"><input type="radio" name="language" value="da"><span class="check-box"></span></label>
+					</div>
+					<div class="language-option">
+						<div class="lang-info">
+							<div class="lang-label">German</div>
+							<div class="lang-points">
+								<div>Interface</div>
+								<div>Buttons & Labels</div>
+							</div>
+						</div>
+						<label class="lang-check"><input type="radio" name="language" value="de"><span class="check-box"></span></label>
+					</div>
+				</div>
+				<!-- Game mode moved to dedicated Gamemode modal -->
+			</div>
+			<div class="modal-actions">
+				<button id="settings-close">Close</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Gamemode modal (select Highscore or Timed and duration) -->
+	<div id="gamemode-modal" class="modal-hidden">
+		<div class="modal-box">
+			<div class="modal-body">
+				<div class="mode-select">
+					<label><input type="radio" name="game-mode" value="highscore" checked> Highscore mode</label>
+					<label><input type="radio" name="game-mode" value="timed"> Timed mode</label>
+				</div>
+				<div class="duration-select">
+					<label>Timed duration:</label>
+					<label><input type="radio" name="timed-duration" value="1" checked> 1m</label>
+					<label><input type="radio" name="timed-duration" value="2"> 2m</label>
+					<label><input type="radio" name="timed-duration" value="3"> 3m</label>
+					<label><input type="radio" name="timed-duration" value="5"> 5m</label>
+					<label><input type="radio" name="timed-duration" value="10"> 10m</label>
+				</div>
+			</div>
+			<div class="modal-actions">
+				<button id="gamemode-close">Close</button>
+			</div>
+		</div>
+	</div>
+	<div id="timer">00:00</div>
+
+	<div id="color-palette">
+		<button data-color="red" style="background:red;"></button>
+		<button data-color="blue" style="background:blue;"></button>
+		<button data-color="green" style="background:green;"></button>
+		<button data-color="magenta" style="background:magenta;"></button>
+		<button data-color="orange" style="background:orange;"></button>
+		<!-- extra colors to increase difficulty (these appear as difficulty grows) -->
+		<button data-color="#39FF14" style="background:#39FF14;" aria-hidden="true"></button>
+		<button data-color="#00BFFF" style="background:#00BFFF;" aria-hidden="true"></button>
+		<button data-color="#FF0080" style="background:#FF0080;" aria-hidden="true"></button>
+		<button data-color="#000000" style="background:#000000;" aria-hidden="true"></button>
+	</div>
+
+	<div class="sidebar">
+		<div class="counter">Wins: <span id="win-count">0</span></div>
+		<div class="counter">Resets: <span id="reset-count">0</span></div>
+		<div class="counter">Streak: <span id="win-streak">0</span></div>
+		<div class="counter">Difficulty: <span id="difficulty-level">1</span></div>
+	</div>
+
+	<div id="game-container">
+		<div id="grid"></div>
+	</div>
+
+	<!-- Exit to start (visible during gameplay) -->
+	<button id="exit-to-start" class="hidden">Exit</button>
+
+	<div class="controls">
+		<button id="check-win">Check Win</button>
+		<button id="reset-btn">Reset</button>
+	</div>
+	<p id="status"></p>
+
+	<!-- Scoreboard modal shown when a timed run ends -->
+	<div id="scoreboard-modal" class="modal-hidden">
+		<div class="modal-box">
+			<div class="modal-body" id="scoreboard-body">
+				<h2 style="color:#fff;margin:0 0 12px">Scoreboard</h2>
+				<div id="scoreboard-grid" class="scoreboard-grid"></div>
+			</div>
+			<div class="modal-actions">
+				<button id="scoreboard-close">Close</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

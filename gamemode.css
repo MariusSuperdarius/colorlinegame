@@ -1,0 +1,12 @@
+/* Gamemode modal styled similar to the start.css fullscreen look */
+#gamemode-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#1a1a2e;z-index:2500}
+.modal-hidden{display:none !important}
+.modal-box{width:80%;max-width:560px;background:#1a1a2e;border:0;padding:20px;border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
+.modal-body{display:flex;flex-direction:column;gap:12px;align-items:center;color:#fff}
+.mode-select{display:flex;gap:12px}
+.mode-select label{color:#fff;background:rgba(255,255,255,0.04);padding:8px 12px;border-radius:6px}
+.duration-select{display:flex;gap:8px;align-items:center}
+.duration-select label{color:#fff;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:6px}
+.modal-actions{margin-top:8px}
+.modal-actions button{padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+

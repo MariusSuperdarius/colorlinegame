@@ -1,0 +1,77 @@
+/* Basic layout and game styles */
+:root{
+  --cell-size:40px;
+  --gap:6px;
+}
+html,body{height:100%;}
+body{
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  margin:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+/* Make buttons use Times New Roman across the UI */
+button{font-family: 'Times New Roman', Times, serif}
+h1{margin:8px 0 16px;}
+#color-palette{display:flex;gap:8px;margin-bottom:12px}
+#color-palette button{width:32px;height:32px;border-radius:6px;border:2px solid transparent;cursor:pointer}
+#color-palette button[aria-pressed="true"]{outline:3px solid rgba(0,0,0,0.2)}
+.sidebar{position:fixed;right:16px;top:16px;background:#fff;padding:8px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.counter{font-size:14px;margin-bottom:4px}
+#game-container{display:flex;align-items:flex-start;gap:16px}
+#grid{display:grid;grid-template-columns:repeat(10,var(--cell-size));grid-auto-rows:var(--cell-size);gap:var(--gap)}
+.cell{width:var(--cell-size);height:var(--cell-size);background:#f2f2f2;border:1px solid #ddd;box-sizing:border-box;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;user-select:none}
+.cell.filled{box-shadow:inset 0 0 0 2px rgba(0,0,0,0.06)}
+.controls{margin-top:12px}
+#controls .btn, .controls button{min-width:120px;padding:8px 12px;border-radius:6px;border:none;background:#fff;color:#111;cursor:pointer; font-family: 'Times New Roman', Times, serif}
+#status{margin-top:8px;font-weight:600}
+.win{color:green}
+.error{color:crimson}
+
+/* Small helper to align the Game Mode button on the start screen - keep default look consistent with start screen */
+#mode-btn{min-width:180px;padding:10px 24px;border-radius:6px;border:none;background:#fff;color:#111;cursor:pointer;margin-top:12px;font-family:'Times New Roman', Times, serif}
+
+/* small screens */
+@media(max-width:480px){
+  :root{--cell-size:28px}
+  .sidebar{position:static;margin-top:8px}
+}
+
+/* utility hidden class used by JS */
+.hidden{display:none !important}
+
+/* visible Exit button during gameplay */
+.exit-button{
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:1001;
+  background:#ff5c5c;
+  color:#fff;
+  border:none;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Timer placed near top where the title was */
+#timer{
+  font-size:1.25rem;
+  margin:8px 0 12px;
+  color:#fff;
+  font-weight:600;
+  background:#000;
+  padding:8px 16px;
+  border-radius:6px;
+  border:2px solid #333;
+}
+
+/* Scoreboard modal grid */
+.scoreboard-grid{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.scoreboard-column{background:rgba(255,255,255,0.06);padding:8px;border-radius:6px;min-width:120px}
+.scoreboard-column h3{margin:0 0 6px;color:#fff;font-size:14px}
+.scoreboard-column .solved-count{color:#ddd;font-size:12px;margin-bottom:6px}
+.score-entry{background:#111;color:#fff;padding:6px;border-radius:4px;margin-bottom:6px;font-family:monospace}
+.score-entry.zero{opacity:0.6}

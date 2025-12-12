@@ -1,0 +1,62 @@
+/* Styles for the Colourblind friendly toggle used in the settings modal */
+/* Label + checkbox styling so the checkbox appears as a modern toggle switch */
+label[for="colourblind-toggle"]{
+	display:inline-flex;
+	align-items:center;
+	gap:10px;
+	color:#ffffff;
+	font-size:16px;
+	user-select:none;
+}
+
+/* Hide default appearance and draw a custom switch */
+#colourblind-toggle{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	width:44px;
+	height:24px;
+	border-radius:14px;
+	background:#bdbdbd;
+	position:relative;
+	cursor:pointer;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+	transition: background .18s ease;
+}
+
+#colourblind-toggle::after{
+	content:'';
+	position:absolute;
+	left:3px;
+	top:3px;
+	width:18px;
+	height:18px;
+	border-radius:50%;
+	background:#ffffff;
+	box-shadow:0 1px 2px rgba(0,0,0,0.35);
+	transition: transform .18s ease;
+}
+
+#colourblind-toggle:checked{
+	background:#26a69a; /* green when enabled */
+}
+
+#colourblind-toggle:checked::after{
+	transform:translateX(20px);
+}
+
+/* Focus style for keyboard users */
+#colourblind-toggle:focus{
+	outline:3px solid rgba(255,255,255,0.18);
+}
+
+/* Responsive smaller switch on narrow screens */
+@media(max-width:480px){
+	#colourblind-toggle{width:38px;height:20px}
+	#colourblind-toggle::after{width:14px;height:14px;left:3px;top:3px}
+	#colourblind-toggle:checked::after{transform:translateX(18px)}
+	label[for="colourblind-toggle"]{font-size:14px}
+}
+
+/* Utility: when emojis are hidden, ensure buttons have no stray text spacing */
+#color-palette button{font-family:inherit;line-height:1}
